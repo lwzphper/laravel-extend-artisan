@@ -1,0 +1,19 @@
+<?php
+
+namespace App\MicroServices\{{ ServiceName }}\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+
+class {{ ProjectName }} extends BaseModel
+{
+
+    /**
+     * @var string
+     */
+    protected $table = '{{ TableName }}';
+
+    /*public function scopeWhereXXXX(Builder $query, $value, $isRequired = true, ?string $tableAlias = null)
+    {
+        return $this->setScopeWhere($query, 'xxxx', $value, $isRequired, $tableAlias, '<>');
+    }*/
+}

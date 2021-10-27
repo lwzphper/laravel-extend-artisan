@@ -1,0 +1,30 @@
+<?php
+
+namespace App\MicroServices\{{ ServiceName }}\Providers;
+
+use App\MicroServices\{{ ServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
+use App\MicroServices\{{ ServiceName }}\Services\{{ ProjectName }}Service;
+use Illuminate\Support\ServiceProvider;
+
+class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
+{
+    /**
+     * 服务列表
+     * @var array|string[]
+     */
+    protected array $serviceList = [
+        {{ ProjectName }}ServiceInterface::class => {{ ProjectName }}Service::class,
+    ];
+
+    /**
+     * 注册服务
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function register()
+    {
+        foreach ($this->serviceList as $interface => $service) {
+            $this->app->instance($interface, $this->app->make($service));
+        }
+    }
+
+}

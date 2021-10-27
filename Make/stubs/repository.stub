@@ -1,0 +1,10 @@
+<?php
+
+namespace App\MicroServices\{{ ServiceName }}\Repositories;
+
+use App\MicroServices\{{ ServiceName }}\Models\{{ ProjectName }};
+
+class {{ ProjectName }}Repository extends RepositoryAbstract
+{
+    protected static string $model = {{ ProjectName }}::class;
+}

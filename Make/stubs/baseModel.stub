@@ -1,0 +1,21 @@
+<?php
+
+namespace App\MicroServices\{{ ServiceName }}\Models;
+
+
+use App\Common\Traits\ScopePageList;
+use App\Common\Traits\ScopeQuery;
+use App\Common\Traits\TimestampString;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * @method \Illuminate\Database\Query\Builder|BaseModel setWhereQuery(array $where, ?string $tableAlias = null, bool $defaultRequired = false)
+ * @method \Illuminate\Database\Query\Builder|BaseModel pageList(?int $pageNo = null, ?int $pageSize = null, array $where = [], bool $getTotal = false)
+ * @mixin \Eloquent
+ */
+class BaseModel extends Model
+{
+    use TimestampString, ScopeQuery, ScopePageList;
+
+    protected $guarded = []; // 黑名单
+}

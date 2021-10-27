@@ -1,0 +1,22 @@
+{
+    "name": "lwz/laravel-extend-artisan",
+    "authors": [
+        {
+            "name": "zhen",
+            "email": "1149243351@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Lwz\\LaravelExtend\\Artisan\\": ""
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lwz\\LaravelExtend\\Artisan\\ArtisanServiceProvider"
+            ]
+        }
+    }
+}
