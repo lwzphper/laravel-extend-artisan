@@ -1,6 +1,9 @@
 ### 使用步骤
-
-1. 注册服务提供者 在 config/app.php 注册 ServiceProvider(Laravel 5.5 + 无需手动注册)
+1. 安装
+   ```shell
+   composer require lwz/laravel-extend-artisan
+   ```
+2. 注册服务提供者 在 config/app.php 注册 ServiceProvider(Laravel 5.5 + 无需手动注册)
    ```php
    'providers' => [
         // ...
@@ -8,7 +11,7 @@
     ],
    ```
 
-2. 创建模板文件（如不创建，使用默认模板）
+3. 创建模板文件（如不创建，使用默认模板）
 
    ```shell
    php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider"
