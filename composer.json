@@ -1,5 +1,8 @@
 {
     "name": "lwz/laravel-extend-artisan",
+    "type": "library",
+    "homepage": "https://github.com/lwzphper/laravel-extend-artisan",
+    "license": "MIT",
     "authors": [
         {
             "name": "zhen",
