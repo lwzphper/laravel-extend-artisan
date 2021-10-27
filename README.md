@@ -16,5 +16,11 @@
 
 ### 命名说明：
 
-+ 创建控制器：php artisan ext-make:controller 控制路径
-+ 创建服务文件：php artisan ext-make:micro 服务名/项目名
++ 创建控制器：
+  ```shell
+  php artisan ext-make:controller 控制器名称
+  ```
++ 创建服务文件：
+   ```shell
+  php artisan ext-make:micro 服务名/项目名 
+  ```
