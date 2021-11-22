@@ -9,7 +9,9 @@
             "email": "1149243351@qq.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-json": "*"
+    },
     "autoload": {
         "psr-4": {
             "Lwz\\LaravelExtend\\Artisan\\": ""

@@ -3,8 +3,9 @@
 namespace App\MicroServices\{{ ServiceName }}\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
-class {{ ProjectName }} extends BaseModel
+class {{ ProjectName }} extends Model
 {
 
     /**

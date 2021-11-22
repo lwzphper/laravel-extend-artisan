@@ -6,6 +6,8 @@ use Illuminate\Console\GeneratorCommand;
 
 class MircoService extends GeneratorCommand
 {
+    use CommandTrait;
+
     /**
      * The name and signature of the console command.
      *
@@ -20,23 +22,20 @@ class MircoService extends GeneratorCommand
      */
     protected $description = '创建服务目录';
 
-    // 服务跟目录名称
-    protected string $microRootDirName = 'MicroServices';
-
     // 服务基本的目录名
     protected array $microBaseDirName = [
         'Interfaces' => [
             'serviceInterface.stub',
         ],
         'Models' => [
-            'baseModel.stub',
+//            'baseModel.stub',
             'serviceModel.stub',
         ],
         'Providers' => [
             'serviceRegisterProvider.stub'
         ],
         'Repositories' => [
-            'repositoryAbstract.stub',
+//            'repositoryAbstract.stub',
             'repository.stub',
         ],
         'Services' => [
@@ -47,10 +46,10 @@ class MircoService extends GeneratorCommand
     // stub对应生成的文件名
     protected array $stubToFileName = [
         'serviceInterface.stub' => '{{projectName}}ServiceInterface.php',
-        'baseModel.stub' => 'BaseModel.php',
+//        'baseModel.stub' => 'BaseModel.php',
         'serviceModel.stub' => '{{projectName}}.php',
         'repository.stub' => '{{projectName}}Repository.php',
-        'repositoryAbstract.stub' => 'RepositoryAbstract.php',
+//        'repositoryAbstract.stub' => 'RepositoryAbstract.php',
         'service.stub' => '{{projectName}}Service.php',
         'serviceRegisterProvider.stub' => '{{serviceName}}ServiceRegisterProvider.php',
     ];
@@ -66,7 +65,7 @@ class MircoService extends GeneratorCommand
         // 分割服务名和项目名
         $inputArr = explode('/', $this->getNameInput());
         if (count($inputArr) != 2) {
-            $this->error('参数格式有误。格式： 服务名/项目名');
+            $this->error('参数格式有误。格式： 服务名/功能名');
             return;
         }
 

@@ -2,12 +2,10 @@
 namespace {{ namespace }};
 
 
-use App\Common\Traits\UserCacheTrait;
 use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {
-    use UserCacheTrait;
 
     protected $userId;
     protected $storeId;
