@@ -16,15 +16,49 @@ class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
         {{ ProjectName }}ServiceInterface::class => {{ ProjectName }}Service::class,
     ];
 
+    // 路由文件列表
+    protected $routes = [
+        'routes.php'
+    ];
+
     /**
      * 注册服务
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function register()
     {
+        // 服务注册
         foreach ($this->serviceList as $interface => $service) {
             $this->app->instance($interface, $this->app->make($service));
         }
+
+        // 路由注册
+        $this->registerRoutes();
     }
 
+    /**
+     * 设置路由的配置信息
+     * @return array
+     */
+    private function routeConfiguration()
+    {
+        return [
+            // 定义访问路由的域名
+            // 'domain' => config('telescope.domain', null),
+            'namespace' => 'App\MicroServices\{{ ServiceName }}\Controllers', // 路由的命名空间
+            'prefix' => '', // 路由前缀
+        ];
+    }
+
+    /**
+     * 注册路由
+     */
+    private function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            foreach ($this->routes as $route) {
+                $this->loadRoutesFrom(__DIR__.'/../Routes/' . $route);
+            }
+        });
+    }
 }

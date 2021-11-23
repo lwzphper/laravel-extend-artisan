@@ -11,9 +11,6 @@ use Illuminate\Support\Str;
 
 trait CommandTrait
 {
-    // 服务跟目录名称
-    protected string $microRootDirName = 'MicroServices';
-
     /**
      * Get the root namespace for the class.
      *
@@ -21,9 +18,18 @@ trait CommandTrait
      */
     protected function rootNamespace()
     {
-        return 'App\\';
+        return config('extend.artisan.package.root_namespace');
     }
 
+    /**
+     * 获取服务目录名称
+     * @return string
+     * @author lwz
+     */
+    protected function getServiceDirName()
+    {
+        return config('extend.artisan.package.dir');
+    }
 
     /**
      * Get the destination class path.
@@ -46,7 +52,7 @@ trait CommandTrait
     protected function getDefaultNamespace($rootNamespace)
     {
         if ($service = $this->getServiceInput()) {
-            $tmp = $rootNamespace . '\\' . $this->microRootDirName . '\\' . $service;
+            $tmp = $rootNamespace . $this->getServiceDirName() . '\\' . $service;
             // 如果设置过了，就不设置
             if (!Str::startsWith($rootNamespace, $tmp)) {
                 $rootNamespace = $tmp;
@@ -73,5 +79,15 @@ trait CommandTrait
     protected function getCreateModelName(): string
     {
         return 'Controllers';
+    }
+
+    /**
+     * 获取迁移文件的路径
+     * @return string
+     * @author lwz
+     */
+    protected function getMigrationPath()
+    {
+        return $this->laravel['path'] . '/' . $this->getServiceDirName() . '/' . $this->getServiceInput() . '/' . $this->input->getOption('path') . '/Database/' . 'migrations';
     }
 }

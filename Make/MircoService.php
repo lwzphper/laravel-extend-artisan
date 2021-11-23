@@ -8,12 +8,7 @@ class MircoService extends GeneratorCommand
 {
     use CommandTrait;
 
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $name = 'ext-make:micro';
+    protected $signature = 'ext-make:micro {service : The service of the migration} {func : The func name of the migration}';
 
     /**
      * The console command description.
@@ -41,6 +36,9 @@ class MircoService extends GeneratorCommand
         'Services' => [
             'service.stub'
         ],
+        'Routes' => [
+            'route.stub'
+        ],
     ];
 
     // stub对应生成的文件名
@@ -51,6 +49,7 @@ class MircoService extends GeneratorCommand
         'repository.stub' => '{{projectName}}Repository.php',
 //        'repositoryAbstract.stub' => 'RepositoryAbstract.php',
         'service.stub' => '{{projectName}}Service.php',
+        'route.stub' => '{{projectName}}.php',
         'serviceRegisterProvider.stub' => '{{serviceName}}ServiceRegisterProvider.php',
     ];
 
@@ -62,15 +61,8 @@ class MircoService extends GeneratorCommand
      */
     public function handle(): void
     {
-        // 分割服务名和项目名
-        $inputArr = explode('/', $this->getNameInput());
-        if (count($inputArr) != 2) {
-            $this->error('参数格式有误。格式： 服务名/功能名');
-            return;
-        }
-
-        $serviceName = ucfirst($inputArr[0]);
-        $projectName = ucfirst($inputArr[1]);
+        $serviceName = $this->getServiceInput();
+        $projectName = trim($this->argument('func'));
 
 
         // 获取服务的目录路径（绝对路径）
@@ -158,7 +150,7 @@ class MircoService extends GeneratorCommand
      */
     protected function getMicroAbsolutePath(): string
     {
-        return $this->laravel['path'] . '/' . str_replace('\\', '/', $this->microRootDirName);
+        return $this->laravel['path'] . '/' . str_replace('\\', '/', $this->getServiceDirName());
     }
 
 
