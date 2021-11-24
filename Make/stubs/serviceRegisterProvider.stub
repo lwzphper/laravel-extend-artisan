@@ -1,9 +1,10 @@
 <?php
 
-namespace App\MicroServices\{{ ServiceName }}\Providers;
+namespace App\{{ FixServiceName }}\Providers;
 
-use App\MicroServices\{{ ServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
-use App\MicroServices\{{ ServiceName }}\Services\{{ ProjectName }}Service;
+use App\{{ FixServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
+use App\{{ FixServiceName }}\Services\{{ ProjectName }}Service;
+use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
 
 class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
@@ -45,7 +46,7 @@ class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
         return [
             // 定义访问路由的域名
             // 'domain' => config('telescope.domain', null),
-            'namespace' => 'App\MicroServices\{{ ServiceName }}\Controllers', // 路由的命名空间
+            'namespace' => 'App\{{ ServiceName }}\Controllers', // 路由的命名空间
             'prefix' => '', // 路由前缀
         ];
     }

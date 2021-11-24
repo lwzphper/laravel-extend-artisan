@@ -5,7 +5,7 @@
  * @LastEditTime: 2021/10/27 16:01
  */
 
-$serviceDirName = 'MicroServices';
+$serviceDirName = '';
 $rootNamespace = 'App';
 return [
     'package' => [

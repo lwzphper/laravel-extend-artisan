@@ -1,8 +1,8 @@
 <?php
 
-namespace App\MicroServices\{{ ServiceName }}\Services;
+namespace App\{{ FixServiceName }}\Services;
 
-use App\MicroServices\{{ ServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
+use App\{{ FixServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
 
 class {{ ProjectName }}Service implements {{ ProjectName }}ServiceInterface
 {

@@ -1,10 +1,7 @@
 <?php
 
-namespace App\MicroServices\{{ ServiceName }}\Repositories;
-
-use App\MicroServices\{{ ServiceName }}\Models\{{ ProjectName }};
+namespace App\{{ FixServiceName }}\Repositories;
 
 class {{ ProjectName }}Repository
 {
-    protected static string $model = {{ ProjectName }}::class;
 }

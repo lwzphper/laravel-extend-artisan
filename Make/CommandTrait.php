@@ -88,6 +88,10 @@ trait CommandTrait
      */
     protected function getMigrationPath()
     {
-        return $this->laravel['path'] . '/' . $this->getServiceDirName() . '/' . $this->getServiceInput() . '/' . $this->input->getOption('path') . '/Database/' . 'migrations';
+        $serInput = $this->getServiceInput();
+        if ($serDir = $this->getServiceDirName()) {
+            $serInput = $serDir . '/' . $serInput;
+        }
+        return $this->laravel['path'] . '/' . $serInput . '/' . $this->input->getOption('path') . '/Database/' . 'migrations';
     }
 }

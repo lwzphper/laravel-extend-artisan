@@ -64,6 +64,10 @@ class MircoService extends GeneratorCommand
         $serviceName = $this->getServiceInput();
         $projectName = trim($this->argument('func'));
 
+        // 拼接上目录名称
+        /*if ($serviceDirName = $this->getServiceDirName()) {
+            $serviceName = $serviceDirName . '/' . $serviceName;
+        }*/
 
         // 获取服务的目录路径（绝对路径）
         $basePath = $this->getMicroAbsolutePath() . '/' . $serviceName;
@@ -127,7 +131,19 @@ class MircoService extends GeneratorCommand
     protected function buildStubClass(string $serviceName, string $projectName, string $stubFileName)
     {
         $stub = $this->files->get($this->resolveStubPath('/stubs/' . $stubFileName));
-        return str_replace(['{{ ServiceName }}', '{{ ProjectName }}', '{{ TableName }}'], [$serviceName, $projectName, \Str::snake($projectName)], $stub);
+        return str_replace(['{{ FixServiceName }}', '{{ ServiceName }}', '{{ ProjectName }}', '{{ TableName }}'], [$this->fixServiceNamespace($serviceName), $serviceName, $projectName, \Str::snake($projectName)], $stub);
+    }
+
+    /**
+     * 补全服务命名空间
+     * @author lwz
+     */
+    protected function fixServiceNamespace(string $projectName): string
+    {
+        if ($serDir = $this->getServiceDirName()) {
+            $projectName = $serDir . '\\' . $projectName;
+        }
+        return $projectName;
     }
 
     /**

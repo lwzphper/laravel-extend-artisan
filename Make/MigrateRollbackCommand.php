@@ -29,15 +29,4 @@ class MigrateRollbackCommand extends RollbackCommand
 
         $this->addArgument('service', InputArgument::REQUIRED, 'service name');
     }
-
-
-    /**
-     * 获取迁移文件的路径
-     * @return string
-     * @author lwz
-     */
-    protected function getMigrationPath()
-    {
-        return $this->laravel['path'] . '/' . $this->getServiceDirName() . '/' . $this->getServiceInput() . '/Database/' . 'migrations';
-    }
 }
