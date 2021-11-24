@@ -4,7 +4,7 @@ namespace App\{{ FixServiceName }}\Providers;
 
 use App\{{ FixServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
 use App\{{ FixServiceName }}\Services\{{ ProjectName }}Service;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
