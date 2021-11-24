@@ -27,4 +27,19 @@ class MigrateCommand extends command
                 {--pretend : Dump the SQL queries that would be run}
                 {--seed : Indicates if the seed task should be re-run}
                 {--step : Force the migrations to be run so they can be rolled back individually}';
+
+
+    /**
+     * 获取迁移文件的路径
+     * @return string
+     * @author lwz
+     */
+    protected function getMigrationPath()
+    {
+        $serInput = $this->getServiceInput();
+        if ($serDir = $this->getServiceDirName()) {
+            $serInput = $serDir . '/' . $serInput;
+        }
+        return $this->laravel['path'] . '/' . $serInput . '/Database/' . 'migrations';
+    }
 }
