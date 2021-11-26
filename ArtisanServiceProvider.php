@@ -18,6 +18,7 @@ use Lwz\LaravelExtend\Artisan\Make\MigrateResetCommand;
 use Lwz\LaravelExtend\Artisan\Make\MigrateRollbackCommand;
 use Lwz\LaravelExtend\Artisan\Make\MircoService;
 use Lwz\LaravelExtend\Artisan\Make\Model;
+use Lwz\LaravelExtend\Artisan\Make\RequestMakeCommand;
 
 class ArtisanServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,7 @@ class ArtisanServiceProvider extends ServiceProvider
         MircoService::class,
         Controller::class,
         Model::class,
+        RequestMakeCommand::class,
     ];
 
     // 迁移文件注册命令
