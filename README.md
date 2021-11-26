@@ -30,5 +30,7 @@ php artisan ext-make:model 服务名 模型名称
 php artisan ext-make:migration 服务名 迁移文件名
 # 执行迁移文件
 php artisan ext-migrate 服务名
+# 创建请求类
+php artisan ext-make:request 服务名 请求类名
 ```
 
