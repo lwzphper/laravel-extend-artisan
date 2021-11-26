@@ -12,6 +12,7 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Lwz\LaravelExtend\Artisan\Make\Controller;
+use Lwz\LaravelExtend\Artisan\Make\MiddlewareMakeCommand;
 use Lwz\LaravelExtend\Artisan\Make\MigrateCommand;
 use Lwz\LaravelExtend\Artisan\Make\MigrateMakeCommand;
 use Lwz\LaravelExtend\Artisan\Make\MigrateResetCommand;
@@ -27,6 +28,7 @@ class ArtisanServiceProvider extends ServiceProvider
         Controller::class,
         Model::class,
         RequestMakeCommand::class,
+        MiddlewareMakeCommand::class,
     ];
 
     // 迁移文件注册命令
