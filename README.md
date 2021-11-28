@@ -28,11 +28,17 @@ php artisan ext-make:controller 服务名 控制器名称
 php artisan ext-make:model 服务名 模型名称
 # 创建迁移文件
 php artisan ext-make:migration 服务名 迁移文件名
-# 执行迁移文件
+# 执行迁移文件（如果需要指定数据库引擎，可以使用 --database=xxx）
 php artisan ext-migrate 服务名
 # 创建请求验证类
 php artisan ext-make:request 服务名 请求类名
 # 创建中间件
-php artisan ext-make:middleware 服务名 请求类名
+php artisan ext-make:middleware 服务名 中间件类名
+# 创建数据工厂
+php artisan ext-make:factory 服务名 工厂名称
+# 创建数据seeder
+php artisan ext-make:seeder 服务名 名称
+# 执行seed（如果需要指定数据库引擎，可以使用 --database=xxx; --class=xxx 指定seeder）
+php artisan ext-db:seed 服务名
 ```
 
