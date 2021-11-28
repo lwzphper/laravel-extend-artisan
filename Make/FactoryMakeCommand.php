@@ -34,19 +34,19 @@ class FactoryMakeCommand extends Command
      */
     protected function getCreateModelName(): string
     {
-        return 'Database/factories';
+        return 'Database/Factories';
     }
 
     protected function getPath($name)
     {
-        $name = (string) Str::of($name)->replaceFirst($this->rootNamespace(), '')->finish('Factory');;
-        return $this->laravel['path']  .'/'. str_replace('\\', '/', $name) . '.php';
+        $name = (string)Str::of($name)->replaceFirst($this->rootNamespace(), '')->finish('Factory');;
+        return $this->laravel['path'] . '/' . str_replace('\\', '/', $name) . '.php';
     }
 
     /**
      * Build the class with the given name.
      *
-     * @param  string  $name
+     * @param string $name
      * @return string
      */
     protected function buildClass($name)
@@ -59,11 +59,14 @@ class FactoryMakeCommand extends Command
 
         $model = class_basename($namespaceModel);
 
-        if (Str::startsWith($namespaceModel, $this->rootNamespace().'Models')) {
-            $namespace = Str::beforeLast('Database\\Factories\\'.Str::after($namespaceModel, $this->rootNamespace().'Models\\'), '\\');
+        if (Str::startsWith($namespaceModel, $this->rootNamespace() . 'Models')) {
+            $namespace = Str::beforeLast('Database\\Factories\\' . Str::after($namespaceModel, $this->rootNamespace() . 'Models\\'), '\\');
         } else {
             $namespace = 'Database\\Factories';
         }
+
+        // 补全命名空间
+        $namespace = $this->getNamespacePrefix() . $namespace;
 
         $replace = [
             '{{ factoryNamespace }}' => $namespace,
@@ -77,8 +80,48 @@ class FactoryMakeCommand extends Command
             '{{factory}}' => $factory,
         ];
 
+        $stub = $this->files->get($this->getStub());
         return str_replace(
-            array_keys($replace), array_values($replace), parent::buildClass($name)
+            array_keys($replace), array_values($replace), $stub
         );
+    }
+
+
+    /**
+     * Guess the model name from the Factory name or return a default model name.
+     *
+     * @param string $name
+     * @return string
+     */
+    protected function guessModelName($name)
+    {
+        if (Str::endsWith($name, 'Factory')) {
+            $name = substr($name, 0, -7);
+        }
+        // 获取最后的名字
+        return basename(str_replace('\\', '/', $name));
+    }
+
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
+        return $this->resolveStubPath('/stubs/factory.stub');
+    }
+
+    /**
+     * Resolve the fully-qualified path to the stub.
+     *
+     * @param  string  $stub
+     * @return string
+     */
+    protected function resolveStubPath($stub)
+    {
+        return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
+            ? $customPath
+            : __DIR__.$stub;
     }
 }

@@ -22,6 +22,14 @@ trait CommandTrait
     }
 
     /**
+     * 获取跟目录名称
+     */
+    protected function rootDirname(): string
+    {
+        return config('extend.artisan.package.root_dirname', '');
+    }
+
+    /**
      * 获取服务目录名称
      * @return string
      * @author lwz
@@ -29,6 +37,38 @@ trait CommandTrait
     protected function getServiceDirName()
     {
         return config('extend.artisan.package.dir');
+    }
+
+    /**
+     * 获取命名空间前缀
+     * @return string
+     */
+    protected function getNamespacePrefix(): string
+    {
+        return $this->rootNamespace() . $this->getServiceInput() . '\\';
+    }
+
+    /**
+     * Qualify the given model class base name.
+     *
+     * @param  string  $model
+     * @return string
+     */
+    protected function qualifyModel(string $model)
+    {
+        $model = ltrim($model, '\\/');
+
+        $model = str_replace('/', '\\', $model);
+
+        $rootNamespace = $this->getNamespacePrefix();
+
+        if (Str::startsWith($model, $rootNamespace)) {
+            return $model;
+        }
+
+        return is_dir(app_path('Models'))
+            ? $rootNamespace.'Models\\'.$model
+            : $rootNamespace.$model;
     }
 
     /**
@@ -93,5 +133,19 @@ trait CommandTrait
             $serInput = $serDir . '/' . $serInput;
         }
         return $this->laravel['path'] . '/' . $serInput . '/' . $this->input->getOption('path') . '/Database/' . 'migrations';
+    }
+
+    /**
+     * 获取数据库路径
+     * @return string
+     */
+    protected function getDatabasePath(): string
+    {
+        $lcFirst = preg_replace('/^'.rtrim($this->rootNamespace(), '\\').'/', $this->rootDirname(),$this->getNamespacePrefix(),1);
+        return str_replace(
+            '\\',
+            '/',
+                $lcFirst
+            ) . 'Database';
     }
 }

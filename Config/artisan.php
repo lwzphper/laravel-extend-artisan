@@ -11,6 +11,7 @@ return [
     'package' => [
         'dir' => $serviceDirName, // 服务目录名
         'root_namespace' => $rootNamespace. '\\', // 跟命名空间
+        'root_dirname' => lcfirst($rootNamespace), // 跟目录名称
         'namespace' => $rootNamespace . $serviceDirName, // 命名空间
     ],
 ];

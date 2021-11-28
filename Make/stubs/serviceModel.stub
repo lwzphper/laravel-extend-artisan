@@ -11,7 +11,7 @@ class {{ ProjectName }} extends Model
     /**
      * @var string
      */
-    protected $table = '{{ TableName }}';
+    protected $table = '{{ TableName }}s';
 
     /*public function scopeWhereXXXX(Builder $query, $value, $isRequired = true, ?string $tableAlias = null)
     {
