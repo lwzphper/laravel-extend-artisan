@@ -43,13 +43,15 @@ class MircoService extends GeneratorCommand
         ],
         'Constants' => [
         ],
-        'Controllers' => [
-        ],
         'Enums' => [
         ],
         'Library' => [
         ],
         'Requests' => [
+        ],
+        'Controllers/Api' => [
+        ],
+        'Controllers/Admin' => [
         ],
         'Rpc/Interfaces' => [
         ],
