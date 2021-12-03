@@ -49,6 +49,9 @@ class MircoService extends GeneratorCommand
         ],
         'Requests' => [
         ],
+        'Controllers' => [
+            'baseController.stub'
+        ],
         'Controllers/Api' => [
         ],
         'Controllers/Admin' => [
@@ -77,6 +80,7 @@ class MircoService extends GeneratorCommand
         'service.stub' => '{{projectName}}Service.php',
         'route.stub' => 'routes.php',
         'serviceRegisterProvider.stub' => '{{serviceName}}Provider.php',
+        'baseController.stub' => 'BasicController.php',
     ];
 
     /**

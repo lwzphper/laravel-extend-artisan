@@ -1,26 +1,20 @@
 <?php
-namespace {{ namespace }};
 
+namespace App\{{ FixServiceName }}\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
-class BaseController extends Controller
+class BasicController
 {
-
-    protected $userId;
-    protected $storeId;
-    protected $username;
-
-    /**
-     * 设置登录用户的属性
-     * @throws \App\Exceptions\ApiException
-     * @author lwz
-     */
-    protected function _setSessionUserAttr()
+    // 服务拆分 或 每个模块单独配置的时候，可以在这里配置
+    /*public function __construct()
     {
-        $userInfo = $this->_getSessionUser();
-        $this->userId = $userInfo->id;
-        $this->storeId = $userInfo->store_id;
-        $this->username = $userInfo->name;
-    }
+        parent::__construct();
+
+        // 设置默认的数据库驱动
+        DB::setDefaultConnection('clue');
+        // 设置默认的日志驱动
+        Log::setDefaultDriver('clue_daily');
+    }*/
 }
