@@ -39,6 +39,30 @@ class MircoService extends GeneratorCommand
         'Routes' => [
             'route.stub'
         ],
+        'Config' => [
+        ],
+        'Constants' => [
+        ],
+        'Controllers' => [
+        ],
+        'Enums' => [
+        ],
+        'Library' => [
+        ],
+        'Requests' => [
+        ],
+        'Rpc/Interfaces' => [
+        ],
+        'Rpc/LocalServices' => [
+        ],
+        'Rpc/RemoteServices' => [
+        ],
+        'Database/Factories' => [
+        ],
+        'Database/migrations' => [
+        ],
+        'Database/Seeders' => [
+        ],
     ];
 
     // stub对应生成的文件名
