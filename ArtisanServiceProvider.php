@@ -20,6 +20,7 @@ use Lwz\LaravelExtend\Artisan\Make\MigrateResetCommand;
 use Lwz\LaravelExtend\Artisan\Make\MigrateRollbackCommand;
 use Lwz\LaravelExtend\Artisan\Make\MircoService;
 use Lwz\LaravelExtend\Artisan\Make\Model;
+use Lwz\LaravelExtend\Artisan\Make\ObserverMakeCommand;
 use Lwz\LaravelExtend\Artisan\Make\RequestMakeCommand;
 use Lwz\LaravelExtend\Artisan\Make\Seeds\SeedCommand;
 use Lwz\LaravelExtend\Artisan\Make\Seeds\SeederMakeCommand;
@@ -35,6 +36,7 @@ class ArtisanServiceProvider extends ServiceProvider
         FactoryMakeCommand::class,
         SeederMakeCommand::class,
         SeedCommand::class,
+        ObserverMakeCommand::class,
     ];
 
     // 迁移文件注册命令
