@@ -7,7 +7,7 @@ use App\{{ FixServiceName }}\Services\{{ ProjectName }}Service;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class {{ ServiceName }}ServiceRegisterProvider extends ServiceProvider
+class {{ ServiceName }}ServiceProvider extends ServiceProvider
 {
     /**
      * 服务列表

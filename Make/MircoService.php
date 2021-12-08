@@ -79,7 +79,7 @@ class MircoService extends GeneratorCommand
 //        'repositoryAbstract.stub' => 'RepositoryAbstract.php',
         'service.stub' => '{{projectName}}Service.php',
         'route.stub' => 'routes.php',
-        'serviceRegisterProvider.stub' => '{{serviceName}}Provider.php',
+        'serviceRegisterProvider.stub' => '{{serviceName}}ServiceProvider.php',
         'baseController.stub' => 'BasicController.php',
     ];
 
