@@ -17,11 +17,7 @@
    php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider"
    ```
 
-### 工程目录说明
-### 一、目录说明
-
-
-
+### 一、工程目录说明
 
 ```text
 ├── app                                 // 应用程序目录
