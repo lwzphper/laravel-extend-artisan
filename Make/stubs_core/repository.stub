@@ -1,0 +1,10 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Repositories;
+use Core\Abstracts\AbstractRepository;
+use App\{{ FixServiceName }}\Models\{{ ProjectName }};
+
+class {{ ProjectName }}Repository extends AbstractRepository
+{
+    public static string $model = {{ ProjectName }}::class;
+}

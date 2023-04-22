@@ -1,0 +1,69 @@
+<?php
+
+namespace {{ namespace }};
+
+use Core\Library\ApiResponse;
+use Illuminate\Http\JsonResponse;
+use App\{{ serverName }}\Controllers\BasicController;
+use App\{{ serverName }}\Interfaces\{{ name }}ServiceInterface;
+use App\{{ serverName }}\Requests\{{ name }}Request;
+
+class {{ class }} extends BasicController
+{
+
+    protected {{ name }}Request $request;
+    protected {{ name }}ServiceInterface $service;
+
+    public function __construct({{ name }}Request $request, {{ name }}ServiceInterface $service)
+    {
+        parent::__construct();
+
+        $this->service = $service;
+        $this->request = $request;
+    }
+
+    /**
+     * 获取列表
+     * @return JsonResponse
+     */
+    public function getList(): JsonResponse
+    {
+
+    }
+
+    /**
+     * 添加
+     * @return JsonResponse
+     */
+    public function add(): JsonResponse
+    {
+
+    }
+
+    /**
+     * 更新
+     * @return JsonResponse
+     */
+    public function update(): JsonResponse
+    {
+
+    }
+
+    /**
+     * 获取详情
+     * @return JsonResponse
+     */
+    public function detail(): JsonResponse
+    {
+
+    }
+
+    /**
+     * 删除
+     * @return JsonResponse
+     */
+    public function delete(): JsonResponse
+    {
+
+    }
+}

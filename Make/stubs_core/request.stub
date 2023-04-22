@@ -1,0 +1,29 @@
+<?php
+
+namespace {{ namespace }};
+
+use Core\CoreRequest;
+
+class {{ class }} extends CoreRequest
+{
+    public function rules(): array
+    {
+        return [
+            'id' => ['bail', 'required', 'integer'],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public function scene(): array
+    {
+        return [
+            //
+        ];
+    }
+}

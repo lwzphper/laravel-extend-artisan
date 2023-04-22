@@ -1,0 +1,129 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Providers;
+
+use App\{{ FixServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
+use App\{{ FixServiceName }}\Services\{{ ProjectName }}Service;
+use Illuminate\Support\Facades\Route;
+use Core\CoreServiceProvider;
+use Illuminate\Support\Facades\Event;
+
+class {{ ServiceName }}ServiceProvider extends CoreServiceProvider
+{
+    /**
+     * rpc服务
+     * @var array
+     */
+    protected array $rpcList = [
+        // 本地服务
+
+        // 远程服务
+    ];
+
+    /**
+     * 服务列表
+     * @var array|string[]
+     */
+    protected array $serviceList = [
+        {{ ProjectName }}ServiceInterface::class => {{ ProjectName }}Service::class,
+    ];
+
+    // 路由文件列表
+    protected array $routes = [
+        'routes.php'
+    ];
+
+    /**
+     * 自定义命令
+     * @var array
+     */
+    protected array $command = [
+
+    ];
+
+    /**
+     * 事件
+     * @var array
+     */
+    protected $listen = [
+    ];
+
+    /**
+     * 注册服务
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function register()
+    {
+        // 初始化操作
+        $this->init();
+    }
+
+    /**
+     * 设置路由的配置信息
+     * @return array
+     */
+    private function routeConfiguration(): array
+    {
+        return [
+            // 定义访问路由的域名
+            // 'domain' => config('telescope.domain', null),
+            'namespace' => 'App\{{ ServiceName }}\Controllers', // 路由的命名空间
+            'prefix' => '', // 路由前缀
+        ];
+    }
+
+    /**
+     * 加载event事件
+     * @author lwz
+     */
+    protected function registerEvent()
+    {
+        $this->booting(function () {
+            $events = $this->getEvents();
+
+            foreach ($events as $event => $listeners) {
+                foreach (array_unique($listeners) as $listener) {
+                    Event::listen($event, $listener);
+                }
+            }
+
+            foreach ($this->subscribe as $subscriber) {
+                Event::subscribe($subscriber);
+            }
+        });
+    }
+
+    /**
+     * 加载配置文件
+     * @author lwz
+     */
+    protected function loadConfig()
+    {
+        // 数据库配置
+//        $this->mergeConfigFrom($this->_getConfigPath() . 'database.php', 'database.connections');
+//        // 日志配置
+//        $this->mergeConfigFrom($this->_getConfigPath() . 'logging.php', 'logging.channels');
+    }
+
+    /**
+     * 获取配置文件路径
+     * @return string
+     * @author lwz
+     */
+    private function _getConfigPath(): string
+    {
+        return __DIR__ . '/../Config/';
+    }
+
+    /**
+     * 注册路由
+     */
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            foreach ($this->routes as $route) {
+                $this->loadRoutesFrom(__DIR__.'/../Routes/' . $route);
+            }
+        });
+    }
+}

@@ -1,0 +1,22 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Models;
+
+use Illuminate\Database\Eloquent\Builder;
+use Core\CoreModel;
+
+class {{ ProjectName }} extends CoreModel
+{
+
+    /**
+     * @var string
+     */
+    protected $table = '{{ TableName }}';
+
+    protected $fillable = [];
+
+    /*public function scopeWhereXXXX(Builder $query, $value, $isRequired = true, ?string $tableAlias = null)
+    {
+        return $this->setScopeWhere($query, 'xxxx', $value, $isRequired, $tableAlias, '<>');
+    }*/
+}

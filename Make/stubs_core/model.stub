@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Core\CoreModel;
+
+class {{ class }} extends CoreModel
+{
+    /*public function scopeWhereXXXX(Builder $query, $value, ?string $tableAlias = null)
+    {
+        return $this->setScopeWhere($query, 'xxxx', $value, true, $tableAlias, '<>');
+    }*/
+}

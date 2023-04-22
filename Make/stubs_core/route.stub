@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/**
+ * 通用路由说明
+ *  getPageList: 获取分页列表
+ *  getList: 获取列表
+ *  getListStat: 列表统计信息
+ *  detail: 获取详情
+ *  add: 添加
+ *  update: 更新
+ *  delete: 删除数据
+ */
