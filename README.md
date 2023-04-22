@@ -17,6 +17,56 @@
    php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider"
    ```
 
+### 工程目录说明
+### 一、目录说明
+
+
+
+
+```text
+├── app                                 // 应用程序目录
+│   └── Bar                             // Bar模块目录
+│       └──Controller                   // 控制器目录
+│           └──Api                      // 前端相关接口
+│           └──Admin                    // 后台相关接口
+│       └──Config                       // 模块自定义配置目录
+│       └──Events                       // 事件目录
+│       └──Listeners                    // 事件监听者
+│       └──Enums                        // 枚举
+│       └──Constants                    // 常量
+│       └──Databases                    // 数据库迁移
+│       └──Request                      // 请求验证目录
+│       └──Routes                       // 路由
+│       └──Interfaces                   // 接口目录
+│       └──Models                       // 模型目录
+│       └──Providers                    // 服务提供者
+│       └──Service                      // 业务逻辑层目录
+│       └──Repositories                 // 仓库目录
+│       └──Rpc                          // 调用外部服务的目录
+│           └──Interfaces               // rpc服务接口
+│           └──Services                 // rpc服务接口实现类
+│       └──...                          // 其他自定义目录
+│   └── README.md                       // 模块说明
+│   └── ...                             // 以后增加的其他模块目录
+├── config                              // 配置文件目录
+├── core                               // 核心目录
+│   └──Abstracts                        // 存放抽象类目录
+│   └──Console                          // 存放自定义命令目录
+│   └──Exception                        // 存放异常接管处理目录
+│   └──Library                          // 公共类库目录
+│   └──Listener                         // 存放事件监听目录
+│   └──Traits                           // 存放复用类目录
+│   └──CoreController.php               // 控制器基础类
+│   └──CoreModel.php                    // 模型基础类
+│   └──CoreRequest.php                  // 请求基础类
+│   └──Rpc                              // 调用外部服务的目录（全局共用的服务，如：用户信息、基建模块接口）
+│       └──Interfaces                   // rpc服务接口
+│       └──Services                     // rpc服务接口实现类
+├── public                              // 外部访问目录
+├── storage                             // 存储目录  
+├── vendor
+```
+
 ### 命名说明：
 
 ```shell

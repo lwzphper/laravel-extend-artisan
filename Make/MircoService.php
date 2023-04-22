@@ -58,9 +58,7 @@ class MircoService extends GeneratorCommand
         ],
         'Rpc/Interfaces' => [
         ],
-        'Rpc/LocalServices' => [
-        ],
-        'Rpc/RemoteServices' => [
+        'Rpc/Services' => [
         ],
         'Database/Factories' => [
         ],
