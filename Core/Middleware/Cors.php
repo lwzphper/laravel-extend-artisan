@@ -20,7 +20,7 @@ class Cors extends Middleware
         //当前请求客户端
         $origin = $request->server('HTTP_ORIGIN') ? $request->server('HTTP_ORIGIN') : '';
         //允许跨域客户端
-        $allow_origin = config('cors.allow_origin');
+        $allow_origin = config('cors.allow_origin', []);
         //可在.env配置参数来控制是否需要验证跨域
         if (!in_array($origin, $allow_origin)) {
             return $response;
