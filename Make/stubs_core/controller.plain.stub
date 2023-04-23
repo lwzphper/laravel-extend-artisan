@@ -4,31 +4,17 @@ namespace {{ namespace }};
 
 use Core\Library\ApiResponse;
 use Illuminate\Http\JsonResponse;
-use App\{{ serverName }}\Controllers\BasicController;
-use App\{{ serverName }}\Interfaces\{{ name }}ServiceInterface;
-use App\{{ serverName }}\Requests\{{ name }}Request;
+use App\{{ serverName }}\Controllers\BaseController;
 
-class {{ class }} extends BasicController
+class {{ class }} extends BaseController
 {
-
-    protected {{ name }}Request $request;
-    protected {{ name }}ServiceInterface $service;
-
-    public function __construct({{ name }}Request $request, {{ name }}ServiceInterface $service)
-    {
-        parent::__construct();
-
-        $this->service = $service;
-        $this->request = $request;
-    }
-
     /**
      * 获取列表
      * @return JsonResponse
      */
     public function getList(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
     /**
@@ -37,7 +23,7 @@ class {{ class }} extends BasicController
      */
     public function add(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
     /**
@@ -46,7 +32,7 @@ class {{ class }} extends BasicController
      */
     public function update(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
     /**
@@ -55,7 +41,7 @@ class {{ class }} extends BasicController
      */
     public function detail(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
     /**
@@ -64,6 +50,6 @@ class {{ class }} extends BasicController
      */
     public function delete(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 }

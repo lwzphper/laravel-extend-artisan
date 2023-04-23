@@ -3,10 +3,10 @@
 namespace {{ namespace }};
 
 use {{ namespacedModel }};
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\{{ serverName }}\Controllers\BaseController;
 use {{ namespacedRequests }}
 
-class {{ class }} extends Controller
+class {{ class }} extends BaseController
 {
     /**
      * Display a listing of the resource.

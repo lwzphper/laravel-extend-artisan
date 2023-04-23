@@ -22,10 +22,6 @@ class MircoService extends GeneratorCommand
         'Interfaces' => [
             'serviceInterface.stub',
         ],
-        'Models' => [
-//            'baseModel.stub',
-            'serviceModel.stub',
-        ],
         'Providers' => [
             'serviceRegisterProvider.stub'
         ],
@@ -35,6 +31,16 @@ class MircoService extends GeneratorCommand
         ],
         'Services' => [
             'service.stub'
+        ],
+        'Models' => [
+//            'baseModel.stub',
+            'serviceModel.stub',
+        ],
+        'Console' => [
+            'schedule.stub'
+        ],
+        'Console/Commands' => [
+            'command.stub'
         ],
         'Routes' => [
             'route.stub'
@@ -78,7 +84,9 @@ class MircoService extends GeneratorCommand
         'service.stub' => '{{projectName}}Service.php',
         'route.stub' => 'routes.php',
         'serviceRegisterProvider.stub' => '{{serviceName}}ServiceProvider.php',
-        'baseController.stub' => 'BasicController.php',
+        'baseController.stub' => 'BaseController.php',
+        'schedule.stub' => '{{projectName}}Schedule.php',
+        'command.stub' => '{{projectName}}Command.php',
     ];
 
     /**

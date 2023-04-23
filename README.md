@@ -1,31 +1,14 @@
-### 使用步骤
-1. 安装
-   ```shell
-   composer require lwz/laravel-extend-artisan --dev
-   ```
-2. 注册服务提供者 在 config/app.php 注册 ServiceProvider(Laravel 5.5 + 无需手动注册)
-   ```php
-   'providers' => [
-        // ...
-        Lwz\LaravelExtend\Artisan\ArtisanServiceProvider::class,
-    ],
-   ```
 
-3. 创建模板文件（如不创建，使用默认模板）
-
-   ```shell
-   php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider"
-   ```
-
-### 一、工程目录说明
+### 一、工程目录结构
 
 ```text
 ├── app                                 // 应用程序目录
-│   └── Bar                             // Bar模块目录
+│   └── Bar                             // 模块目录
 │       └──Controller                   // 控制器目录
 │           └──Api                      // 前端相关接口
 │           └──Admin                    // 后台相关接口
 │       └──Config                       // 模块自定义配置目录
+│       └──Console                      // Schedule 及 artisan 命令目录
 │       └──Events                       // 事件目录
 │       └──Listeners                    // 事件监听者
 │       └──Enums                        // 枚举
@@ -63,7 +46,73 @@
 ├── vendor
 ```
 
-### 命名说明：
+### 二、初始化项目
+1. 安装
+   ```shell
+   composer require lwz/laravel-extend-artisan --dev
+   ```
+   
+2. 注册服务提供者 在 config/app.php 注册 ServiceProvider**(Laravel 5.5 + 无需手动注册)**
+   ```php
+   'providers' => [
+        // ...
+        Lwz\LaravelExtend\Artisan\ArtisanServiceProvider::class,
+    ],
+   ```
+   
+3. `composer.json` 添加 Core 的目录命名空间
+    
+    ```text
+        "autoload": {
+            "psr-4": {
+                "App\\": "app/",
+                "Core\\": "core/",
+                "Database\\Factories\\": "database/factories/",
+                "Database\\Seeders\\": "database/seeders/"
+            }
+        },
+    ```
+    
+    ```shell
+    composer dump-autoload
+    ```
+    
+4. 创建模板文件
+
+   ```shell
+   php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider" --force
+   ```
+
+5. 删除 app 目录下的子目录
+
+### 三、新建领域示例
+
+创建 Foo 领域的 Bar 功能
+
+1. 创建相关文件
+
+   ```shell
+   # 创建目录结构
+   php artisan ext-make:micro Foo Bar 
+   # 创建 TestController 控制器
+   php artisan ext-make:controller Foo Api/TestController
+   # 创建表单验证类
+   php artisan ext-make:request Foo TestRequest
+   ```
+
+2. 将对应模块的服务提供者注册到 `Core/Providers/AppServiceProvider.php` 中
+
+   ```php
+   protected array $providers = [
+       FooServiceProvider::class,
+   ];
+   ```
+
+3. 在 `app/Foo/Routes/routes.php` 中定义路由
+
+   如果需要自定义路由文件，在 `app/Foo/Providers/FooServiceProvider.php` 服务提供者的 `$routes` 属性中定义即可
+
+### 四、命名说明：
 
 ```shell
 # 创建服务基本框架

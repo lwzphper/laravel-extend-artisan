@@ -22,4 +22,14 @@ class Controller extends Command
     {
         $this->addArgument('service', InputArgument::REQUIRED, 'service name');
     }
+    
+    protected function replaceClass($stub, $name)
+    {
+        $class = str_replace($this->getNamespace($name) . '\\', '', $name);
+        return str_replace(
+            ['DummyClass', '{{ class }}', '{{class}}', '{{ serverName }}', '{{ name }}'],
+            [$class, $class, $class, $this->getServiceInput(), ucfirst(str_replace(['controller', 'Controller'], ['', ''], $class))],
+            $stub
+        );
+    }
 }
