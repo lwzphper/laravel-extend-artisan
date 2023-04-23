@@ -61,7 +61,7 @@
    ```
    
 3. `composer.json` 添加 Core 的目录命名空间
-    
+   
     ```text
         "autoload": {
             "psr-4": {
@@ -82,6 +82,16 @@
    ```shell
    php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider" --force
    ```
+
+5. 将 `config/app.php` 目录下的 `App\Providers` 调整为 `Core\Providers`
+
+    ```php
+    Core\Providers\AppServiceProvider::class,
+    Core\Providers\AuthServiceProvider::class,
+    // Core\Providers\BroadcastServiceProvider::class,
+    Core\Providers\EventServiceProvider::class,
+    Core\Providers\RouteServiceProvider::class,
+    ```
 
 5. 删除 app 目录下的子目录
 
@@ -110,6 +120,10 @@
 
 3. 在 `app/Foo/Routes/routes.php` 中定义路由
 
+   ```php
+   Route::get('/', [\App\Foo\Controllers\Api\TestController::class, 'getList']);
+   ```
+   
    如果需要自定义路由文件，在 `app/Foo/Providers/FooServiceProvider.php` 服务提供者的 `$routes` 属性中定义即可
 
 ### 四、命名说明：
