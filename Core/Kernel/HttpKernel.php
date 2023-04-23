@@ -78,13 +78,5 @@ class HttpKernel extends Kernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         // 自定义中间件
-        'user.token' => \Liujun\Auth\Middleware\CheckUserToken::class, // 登录认证
-        'api.sign.Core' => CheckCoreApiSign::class, // 签名认证
-        'privilege.module' => CheckModulePrivilege::class, // 模块权限
-        'verify.sign' => \Core\Sign\Middleware\SignMiddleware::class, // 签名认证
-        'company.manager' => CompanyManager::class, // 企业负责人/管理员
-        'company.type' => CompanyType::class, // 企业负责人/管理员
-        'app.secret' => AppSecret::class, // app签名验证
-        'promote.token' => Authorize::class, // 推广大使权限认证
     ];
 }

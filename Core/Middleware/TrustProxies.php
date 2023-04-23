@@ -10,9 +10,9 @@ class TrustProxies extends Middleware
     /**
      * The trusted proxies for this application.
      *
-     * @var array|string|null
+     * @var array<int, string>|string|null
      */
-    protected $proxies = ['HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR'];
+    protected $proxies;
 
     /**
      * The headers that should be used to detect proxies.
