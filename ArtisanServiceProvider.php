@@ -7,7 +7,6 @@
 
 namespace Lwz\LaravelExtend\Artisan;
 
-
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;

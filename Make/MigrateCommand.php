@@ -9,7 +9,6 @@ namespace Lwz\LaravelExtend\Artisan\Make;
 
 use Illuminate\Database\Console\Migrations\MigrateCommand as command;
 
-
 class MigrateCommand extends command
 {
     use CommandTrait;
