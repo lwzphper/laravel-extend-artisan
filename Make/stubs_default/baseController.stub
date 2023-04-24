@@ -4,9 +4,8 @@ namespace App\{{ FixServiceName }}\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Core\CoreController;
 
-class BaseController extends CoreController
+class BaseController
 {
     // 服务拆分 或 每个模块单独配置的时候，可以在这里配置
     /*public function __construct()

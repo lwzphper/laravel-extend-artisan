@@ -1,0 +1,15 @@
+<?php
+
+namespace App\{{ ServiceName }}\Console;
+
+
+use Illuminate\Console\Scheduling\Schedule;
+use Core\Interfaces\ScheduleInterface;
+
+class {{ ProjectName }}Schedule implements ScheduleInterface
+{
+    public static function run(Schedule $schedule)
+    {
+//        $schedule->command('command')->daily();
+    }
+}

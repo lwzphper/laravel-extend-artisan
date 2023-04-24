@@ -4,6 +4,7 @@ namespace Lwz\LaravelExtend\Artisan\Make\Seeds;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Database\Console\Seeds\SeederMakeCommand as Command;
+use Illuminate\Support\Str;
 use Lwz\LaravelExtend\Artisan\Make\CommandTrait;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -36,14 +37,14 @@ class SeederMakeCommand extends Command
     /**
      * Resolve the fully-qualified path to the stub.
      *
-     * @param  string  $stub
+     * @param string $stub
      * @return string
      */
     protected function resolveStubPath($stub)
     {
         return is_file($customPath = $this->laravel->basePath(trim($stub, '/')))
             ? $customPath
-            : __DIR__.'/..'.$stub;
+            : __DIR__ . '/..' . $stub;
     }
 
     /**
@@ -54,10 +55,12 @@ class SeederMakeCommand extends Command
      */
     protected function getPath($name)
     {
-        if (is_dir($this->getDatabasePath() . '/seeds')) {
-            return $this->getDatabasePath() . '/Seeds/' . $name . '.php';
+        $name = str_replace('\\', '/', Str::replaceFirst($this->getNamespacePrefix(), '', $name));
+        $databasePath = $this->getDatabasePath();
+        if (is_dir($databasePath . '/seeds')) {
+            return $databasePath . '/Seeds/' . $name . '.php';
         } else {
-            return $this->getDatabasePath() . '/Seeders/' . $name . '.php';
+            return $databasePath . '/Seeders/' . $name . '.php';
         }
     }
 
@@ -80,5 +83,10 @@ class SeederMakeCommand extends Command
             $stub
         );
         return $this;
+    }
+
+    protected function getCreateModelName(): string
+    {
+        return '';
     }
 }

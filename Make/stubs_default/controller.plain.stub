@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+
+class {{ class }} extends BaseController
+{
+    public function addOrUpdate()
+    {
+
+    }
+
+    public function getList()
+    {
+
+    }
+
+    public function detail()
+    {
+
+    }
+}

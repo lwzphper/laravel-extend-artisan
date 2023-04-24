@@ -66,11 +66,12 @@ class MircoService extends GeneratorCommand
         ],
         'Rpc/Services' => [
         ],
-        'Database/Factories' => [
-        ],
+//        'Database/Factories' => [
+//        ],
         'Database/migrations' => [
         ],
         'Database/Seeders' => [
+            'databaseSeeder.stub'
         ],
     ];
 
@@ -87,6 +88,7 @@ class MircoService extends GeneratorCommand
         'baseController.stub' => 'BaseController.php',
         'schedule.stub' => '{{projectName}}Schedule.php',
         'command.stub' => '{{projectName}}Command.php',
+        'databaseSeeder.stub' => 'DatabaseSeeder.php',
     ];
 
     /**

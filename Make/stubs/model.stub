@@ -2,10 +2,12 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Core\CoreModel;
 
-class {{ class }} extends Model
+class {{ class }} extends CoreModel
 {
-    use HasFactory;
+    /*public function scopeWhereXXXX(Builder $query, $value, ?string $tableAlias = null)
+    {
+        return $this->setScopeWhere($query, 'xxxx', $value, true, $tableAlias, '<>');
+    }*/
 }

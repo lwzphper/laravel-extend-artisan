@@ -51,7 +51,7 @@ trait CommandTrait
     /**
      * Qualify the given model class base name.
      *
-     * @param  string  $model
+     * @param string $model
      * @return string
      */
     protected function qualifyModel(string $model)
@@ -67,8 +67,8 @@ trait CommandTrait
         }
 
         return is_dir(app_path('Models'))
-            ? $rootNamespace.'Models\\'.$model
-            : $rootNamespace.$model;
+            ? $rootNamespace . 'Models\\' . $model
+            : $rootNamespace . $model;
     }
 
     /**
@@ -98,7 +98,7 @@ trait CommandTrait
                 $rootNamespace = $tmp;
             }
         }
-        return $rootNamespace . '\\' . $this->getCreateModelName();
+        return $this->getCreateModelName() ? $rootNamespace . '\\' . $this->getCreateModelName() : $rootNamespace;
     }
 
     /**
@@ -141,11 +141,19 @@ trait CommandTrait
      */
     protected function getDatabasePath(): string
     {
-        $lcFirst = preg_replace('/^'.rtrim($this->rootNamespace(), '\\').'/', $this->rootDirname(),$this->getNamespacePrefix(),1);
+//        $lcFirst = preg_replace('/^'.rtrim($this->rootNamespace(), '\\').'/', $this->rootDirname(),$this->getNamespacePrefix(),1);
         return str_replace(
-            '\\',
-            '/',
-                $lcFirst
+                '\\',
+                '/',
+//                $lcFirst
+                $this->getNamespacePrefix()
             ) . 'Database';
+    }
+
+    protected function resolveStubPath($stub)
+    {
+        return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
+            ? $customPath
+            : __DIR__ . $stub;
     }
 }

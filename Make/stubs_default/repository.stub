@@ -1,0 +1,7 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Repositories;
+
+class {{ ProjectName }}Repository
+{
+}

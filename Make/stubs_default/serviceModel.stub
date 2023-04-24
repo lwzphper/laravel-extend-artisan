@@ -3,17 +3,15 @@
 namespace App\{{ FixServiceName }}\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Core\CoreModel;
+use Illuminate\Database\Eloquent\Model;
 
-class {{ ProjectName }} extends CoreModel
+class {{ ProjectName }} extends Model
 {
 
     /**
      * @var string
      */
-    protected $table = '{{ TableName }}';
-
-    protected $fillable = [];
+    protected $table = '{{ TableName }}s';
 
     /*public function scopeWhereXXXX(Builder $query, $value, $isRequired = true, ?string $tableAlias = null)
     {

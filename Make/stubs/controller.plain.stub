@@ -2,22 +2,54 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Http\Request;
+use Core\Library\ApiResponse;
+use Illuminate\Http\JsonResponse;
+use App\{{ serverName }}\Controllers\BaseController;
 
 class {{ class }} extends BaseController
 {
-    public function addOrUpdate()
+    /**
+     * 获取列表
+     * @return JsonResponse
+     */
+    public function getList(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
-    public function getList()
+    /**
+     * 添加
+     * @return JsonResponse
+     */
+    public function add(): JsonResponse
     {
-
+        return ApiResponse::success();
     }
 
-    public function detail()
+    /**
+     * 更新
+     * @return JsonResponse
+     */
+    public function update(): JsonResponse
     {
+        return ApiResponse::success();
+    }
 
+    /**
+     * 获取详情
+     * @return JsonResponse
+     */
+    public function detail(): JsonResponse
+    {
+        return ApiResponse::success();
+    }
+
+    /**
+     * 删除
+     * @return JsonResponse
+     */
+    public function delete(): JsonResponse
+    {
+        return ApiResponse::success();
     }
 }

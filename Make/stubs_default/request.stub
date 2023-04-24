@@ -1,0 +1,44 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Requests\AbstractRequest;
+
+class {{ class }} extends AbstractRequest
+{
+    public function rules(): array
+    {
+        return [
+            'id' => ['bail', 'required', 'integer'],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public function scene(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    /**
+     * 根据路由名称，更改对应的路由数据
+     * @param array $rules
+     * @return array
+     */
+    /*private function _changeRulesByRouteName(array $rules): array
+    {
+        switch ($this->route()->getName()) {
+            case 'xxxx':
+                $rules['id'] = ['bail', 'nullable', 'integer']; // 更新时，id非必填
+                break;
+        }
+        return $rules;
+    }*/
+}

@@ -33,7 +33,7 @@ class ArtisanServiceProvider extends ServiceProvider
         Model::class,
         RequestMakeCommand::class,
         MiddlewareMakeCommand::class,
-        FactoryMakeCommand::class,
+//        FactoryMakeCommand::class,
         SeederMakeCommand::class,
         SeedCommand::class,
         ObserverMakeCommand::class,
@@ -73,7 +73,7 @@ class ArtisanServiceProvider extends ServiceProvider
         // 只有在 console 模式才执行
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/Make/stubs_core' => $this->app->basePath('stubs'),
+//                __DIR__ . '/Make/stubs' => $this->app->basePath('stubs'),
                 __DIR__ . '/Core' => $this->app->basePath('core'),
                 __DIR__ . '/bootstrap/app.php' => $this->app->basePath('bootstrap/app.php'),
             ]);

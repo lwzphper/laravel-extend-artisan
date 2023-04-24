@@ -32,15 +32,13 @@ class SeedCommand extends Command
      */
     protected function getSeeder()
     {
-        $class = $this->input->getArgument('class') ?? $this->input->getOption('class');
-
-        $namespacePrefix = $this->getNamespacePrefix() . 'Database\\Seeders\\';
+        $class = $this->input->getArgument('class') ?? ($this->input->getOption('class') ?? $this->getDefaultSeedClass());
 
         if (strpos($class, '\\') === false) {
-            $class = $namespacePrefix . $class;
+            $class = $this->getSeedClassPrefix() . $class;
         }
 
-        if ($class === $namespacePrefix . 'DatabaseSeeder' &&
+        if ($class === $this->getDefaultSeedClass() &&
             !class_exists($class)) {
             $class = 'DatabaseSeeder';
         }
@@ -59,9 +57,19 @@ class SeedCommand extends Command
     protected function getOptions()
     {
         return [
-            ['class', null, InputOption::VALUE_OPTIONAL, 'The class name of the root seeder', 'Database\\Seeders\\DatabaseSeeder'],
+            ['class', null, InputOption::VALUE_OPTIONAL, 'The class name of the root seeder'],
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to seed'],
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
         ];
+    }
+
+    private function getDefaultSeedClass(): string
+    {
+        return $this->getSeedClassPrefix() . 'DatabaseSeeder';
+    }
+
+    private function getSeedClassPrefix(): string
+    {
+        return $this->getNamespacePrefix() . 'Database\\Seeders\\';
     }
 }

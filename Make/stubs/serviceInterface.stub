@@ -7,23 +7,55 @@ interface {{ ProjectName }}ServiceInterface
 {
     /**
      * 获取分页列表
+     * @param array $userInfo 操作用户信息（必须包含下面字段）
+     *      id：用户id
+     *      company_id：企业id
+     * @param array $data 数据
+     *      必填项：
+     *        xxxxx
+     *      选填项：
+     *        page: 页码
+     *        size： 分页大小
      * @return mixed
      */
-    public function getPageList();
+    public function getPageList(array $userInfo, array $data);
 
 
     /**
      * 添加
-     * @param array $data 添加的数据
+     * @param array $userInfo 操作用户信息（必须包含下面字段）
+     *      id：用户id
+     *      company_id：企业id
+     * @param array $data 数据
+     *      必填项：
+     *        xxxxx
+     *      选填项：
+     *        xxxxx
      * @return mixed
      */
-    public function addData(array $data);
+    public function addData(array $userInfo, array $data);
 
     /**
      * 根据id修改数据
-     * @param int $id id
-     * @param array $data 编辑的数据
+     * @param array $userInfo 操作用户信息（必须包含下面字段）
+     *      id：用户id
+     *      company_id：企业id
+     * @param array $data 数据
+     *      必填项：
+     *        xxxxx
+     *      选填项：
+     *        xxxxx
      * @return mixed
      */
-    public function editById(int $id, array $data);
+    public function editData(array $userInfo, array $data);
+
+    /**
+     * 根据id修改数据
+     * @param array $userInfo 操作用户信息（必须包含下面字段）
+     *      id：用户id
+     *      company_id：企业id
+     * @param int $id id
+     * @return mixed
+     */
+    public function deleteById(array $userInfo, int $id);
 }

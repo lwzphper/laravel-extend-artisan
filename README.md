@@ -1,10 +1,9 @@
-## laravel 工程脚手架
 
 ### 一、工程目录结构
 
 ```text
 ├── app                                 // 应用程序目录
-│   └── Bar                             // 模块目录
+│   └── Bar                             // 领域模块 Bar
 │       └──Controller                   // 控制器目录
 │           └──Api                      // 前端相关接口
 │           └──Admin                    // 后台相关接口
@@ -62,7 +61,7 @@
    ```
    
 3. `composer.json` 添加 Core 的目录命名空间
-   
+    
     ```text
         "autoload": {
             "psr-4": {
@@ -83,16 +82,6 @@
    ```shell
    php artisan vendor:publish --provider="Lwz\LaravelExtend\Artisan\ArtisanServiceProvider" --force
    ```
-
-5. 将 `config/app.php` 目录下的 `App\Providers` 调整为 `Core\Providers`
-
-    ```php
-    Core\Providers\AppServiceProvider::class,
-    Core\Providers\AuthServiceProvider::class,
-    // Core\Providers\BroadcastServiceProvider::class,
-    Core\Providers\EventServiceProvider::class,
-    Core\Providers\RouteServiceProvider::class,
-    ```
 
 5. 删除 app 目录下的子目录
 
@@ -121,10 +110,6 @@
 
 3. 在 `app/Foo/Routes/routes.php` 中定义路由
 
-   ```php
-   Route::get('/', [\App\Foo\Controllers\Api\TestController::class, 'getList']);
-   ```
-   
    如果需要自定义路由文件，在 `app/Foo/Providers/FooServiceProvider.php` 服务提供者的 `$routes` 属性中定义即可
 
 ### 四、命名说明：
@@ -144,8 +129,8 @@ php artisan ext-migrate 服务名
 php artisan ext-make:request 服务名 请求类名
 # 创建中间件
 php artisan ext-make:middleware 服务名 中间件类名
-# 创建数据工厂
-php artisan ext-make:factory 服务名 工厂名称
+# 创建数据工厂（暂不支持在模块中使用 factory 方式创建数据）
+# php artisan ext-make:factory 服务名 工厂名称
 # 创建数据seeder
 php artisan ext-make:seeder 服务名 名称
 # 执行seed（如果需要指定数据库引擎，可以使用 --database=xxx; --class=xxx 指定seeder）

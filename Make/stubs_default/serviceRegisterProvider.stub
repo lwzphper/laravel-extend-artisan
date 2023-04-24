@@ -1,0 +1,65 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Providers;
+
+use App\{{ FixServiceName }}\Interfaces\{{ ProjectName }}ServiceInterface;
+use App\{{ FixServiceName }}\Services\{{ ProjectName }}Service;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+
+class {{ ServiceName }}ServiceProvider extends ServiceProvider
+{
+    /**
+     * 服务列表
+     * @var array|string[]
+     */
+    protected array $serviceList = [
+        {{ ProjectName }}ServiceInterface::class => {{ ProjectName }}Service::class,
+    ];
+
+    // 路由文件列表
+    protected $routes = [
+        'routes.php'
+    ];
+
+    /**
+     * 注册服务
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
+    public function register()
+    {
+        // 服务注册
+        foreach ($this->serviceList as $interface => $service) {
+            $this->app->instance($interface, $this->app->make($service));
+        }
+
+        // 路由注册
+        $this->registerRoutes();
+    }
+
+    /**
+     * 设置路由的配置信息
+     * @return array
+     */
+    private function routeConfiguration()
+    {
+        return [
+            // 定义访问路由的域名
+            // 'domain' => config('telescope.domain', null),
+            'namespace' => 'App\{{ ServiceName }}\Controllers', // 路由的命名空间
+            'prefix' => '', // 路由前缀
+        ];
+    }
+
+    /**
+     * 注册路由
+     */
+    private function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            foreach ($this->routes as $route) {
+                $this->loadRoutesFrom(__DIR__.'/../Routes/' . $route);
+            }
+        });
+    }
+}

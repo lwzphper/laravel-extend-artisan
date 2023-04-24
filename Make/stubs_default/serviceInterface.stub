@@ -1,0 +1,29 @@
+<?php
+
+namespace App\{{ FixServiceName }}\Interfaces;
+
+
+interface {{ ProjectName }}ServiceInterface
+{
+    /**
+     * 获取分页列表
+     * @return mixed
+     */
+    public function getPageList();
+
+
+    /**
+     * 添加
+     * @param array $data 添加的数据
+     * @return mixed
+     */
+    public function addData(array $data);
+
+    /**
+     * 根据id修改数据
+     * @param int $id id
+     * @param array $data 编辑的数据
+     * @return mixed
+     */
+    public function editById(int $id, array $data);
+}
