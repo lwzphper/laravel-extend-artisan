@@ -51,7 +51,7 @@
    composer require lwz/laravel-extend-artisan --dev
    ```
    
-2. 注册服务提供者 在 config/app.php 注册 ServiceProvider**(Laravel 5.5 + 无需手动注册)**
+2. 注册服务提供者 在 config/app.php 注册 ServiceProvider **(Laravel 5.5 + 无需手动注册)**
    ```php
    'providers' => [
         // ...
